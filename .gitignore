@@ -1,0 +1,18 @@
+# Latex temp files
+
+*.aux
+*.idx
+*.lof
+*.lol
+*.log
+*.lot
+*.blg
+*.nlo
+*.out
+*.toc
+*.bbl
+*.blg
+*.tdo
+*.loa
+*.exp
+*.algorithmic
