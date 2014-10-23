@@ -13,4 +13,4 @@ Für jede Vorlesung / Übung wird ein issue erstellt. Tragt euch bitte da ein, w
 
 Denk daran, das " aus '' besteht, sonst entstehen Sonderzeichen.
 
-
+Auf Tabellen im Grafiken immer im Text verweisen, wenn sie Bezug haben. LaTeX tut die o hin, dass es schön ist.
