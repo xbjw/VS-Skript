@@ -1,0 +1,69 @@
+\chapter{Einführung}
+
+\begin{stddef} [Transparenz]
+	Der User sieht die Komplexität nicht, diese ist durchsichtig.
+\end{stddef}
+
+\begin{quote}
+	A distributed system is a collection of independent computers that appears to ist users as a single coherent system.
+\end{quote}
+
+Middleware ''Verteiltesystemschicht'', sorgt dafür, dass man verteilt bauen kann. Anwendungen sehen unter umständen nur diese Schicht und nicht das Betriebssystem.
+
+\section{Verschiedene Systeme}
+\begin{description}
+	\item[Kommunikationsverbund] \hfill \\
+		Übertragung von Daten bsp. Email.
+	\item[Informationsverbund] \hfill \\
+		Verbreitung von Informationen, bsp. WWW wie ein Kanal einschalten.
+	\item[Datenverbund] \hfill \\
+		Speicherung von Daten an verschiedenen Stellen, Datenbanken (DHT), Erhöhung von Verfügbarkeit.
+	\item[Lastverbund] \hfill \\
+		Aufteilung stoßweiser Lasten, Ressourcen Auslastung gleichschalten. Interessant für Leute, die Stoßzeiten haben, Ticketverkauf. Cloud computing, Leistung bereit stellen.
+	\item[Leistungsverbund] \hfill \\
+		Anfragen in Teile zerlegen, dadurch schnellere Antworten. Bsp. Wetter wird in einzelnen Quadranten berechnet, um daraus das ''gesammt Wetter'' für Europa berechnet.
+	\item[Wartungsverbund] \hfill \\
+		Kann Zetral Störungen erkennen und beheben, dadurch Kostenersparrniss, weil nicht jeder Rechner einzelt. Bsp. Pcs für Tägliche veranstaltungen, lassen sich Zentral zurücksetzen.
+	\item[Funktionsverbund] \hfill \\
+		Spezeille Aufgaben auf spezielle Rechner verteilen, Superrechner, Druckserver.
+\end{description}
+
+
+\section{Wünschenswerte Eigenschaften}
+\begin{description}
+	\item[Offenheit] Erweiterbarkeit über verschiedene Systeme, im laufenden Betrieb. Schnittstellen zur Verfügung stellen.
+	\item[Nebenläufigkeit] Gleichzeitige Prozesse in einem System. Wirklich Parallel nur auf mehreren Prozessoren, Rechnern. Wichtiges Thema ist Synchronisation.
+	\item[Skalierbarbeit] funktioniert gut mit wenig und mit vielen Systemen. 
+	\item[Sicherheit] Vertraulichkeit, Daten werden von den richtigen gelesen. Integrität, Daten werden unverändert übertragen. Authenzität, Daten stammen von den richtigen Leuten.
+	\item[Fehlertoleranz] Fehler ab zu fangen macht ein gutes System aus. Häufige Fehlannahmen:
+		\begin{itemize}
+			\item Netzwerk ist zuverlässig, sicher und homogen
+			\item Topologie ändert sich nicht
+			\item Latenzzeit beträgt null
+			\item Bandbreite ist unbegrenzt
+			\item Energie ist kein Problem (Always-on)
+			\item Übertragungskosten betragen null
+			\item Empfänger verarbeitet Nachrichten so schnell, wie Sender sendet. (Im Netz kann es zu Staus kommen, keine Garantien.)
+			\item Es gibt genau einen Administrator
+		\end{itemize}
+	\item[Transparenz] Benutzer ist nicht Bewusst, dass er auf einem Verteilten System arbeitet, sieht ein einfacheres Bild.
+		\begin{table}[h]
+			\begin{tabular}{ l |  p{11cm} }
+				Zugriff & Zugriff auf die Ressource erfolgt immer auf die gleiche Art und Weise (lokal oder entfernt) \\ \hline
+				Ort & Verbirgt, wo sich eine Ressource befindet. Zugriff über Namen, die keine Ortsinformationen enthalten (Problem: Drucker, Sicherheit) \\ \hline
+				Migration & Verschieben von Ressourcen ist für Benutzer und Anwendungen transparent \\ \hline
+				Relokation & Verbirgt, dass eine Ressource an einen anderen Ort verschoben werden kann, während sie genutzt wird \\ \hline
+				Replikation &  Verbirgt, dass eine Ressource repliziert ist \\ \hline
+				Nebenläufigkeit & Verbirgt, dass eine Ressource von mehreren konkurrierenden Benutzern gleichzeitig genutzt werden kann \\ \hline
+				Fehler & Verbirgt den Ausfall und die Wiederherstellung einer Ressource \\
+				
+			\end{tabular}
+			\caption{Transparenztypen}
+			\label{table:transparenztypen}
+		\end{table}
+\end{description}
+
+
+ 
+\section{Schlusssatz zur Einführung}
+Verteilte Systeme bieten gegenüber zentralen einige Vorteilte, sind jedoch komplexer und bedürfen eines sorgfältigen Designs.
