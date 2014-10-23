@@ -1,0 +1,206 @@
+%
+%
+%
+% Pakete (fold)
+%
+%
+% Zeichensatz
+\usepackage[utf8]{inputenc} % Zeichensatz: UTF 8
+\usepackage[T1]{fontenc} % Schriftzeichensatz: europäisch
+\usepackage[german]{babel} % Neue Rechtschreibung und Silbentrennung
+%
+% Farben
+\usepackage[dvipsnames,table]{xcolor} % Farben
+%
+% Seitenlayout
+\usepackage{scrpage2}
+%
+% Grafiken
+\usepackage{graphicx}
+%
+% Titelanpassugnen
+\usepackage{titlesec,scalefnt}
+%
+% Inhaltsanpassungen
+\usepackage{titletoc}
+%
+% Mathematische Pakete
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb,amsthm}
+%
+% Bild- und Teilbildunterschriften (hypcap setzt den Anker vernünftig
+\usepackage[hypcap=true]{caption}
+\usepackage[hypcap=true]{subcaption}
+%
+% Listen
+\usepackage{enumitem}
+\usepackage{tikz}
+%
+% Tabellen
+\usepackage{booktabs,colortbl,longtable}
+%
+% Quelltext-Einbinden
+\usepackage[final]{listings}
+%
+% Hyperref - load after pagestyle due to captionsredefinition there
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage[all]{hypcap}	% Link to start of figures, not captions
+%
+% Literatur
+\usepackage[numbers,sort]{natbib}
+\usepackage{cleveref}
+% (end)
+%
+%
+%
+% Einstellungen & globale Variablen (fold)
+%
+% Name, Titel und andere Einstellungen
+\newcommand{\UzLTitel}{Verteilte Systeme} %Title
+\newcommand{\UzLTitelFormatiert}{%
+	\LARGE\color{UzLcolor}\bfseries%
+	Verteilte Systeme%
+}
+% Farbe
+\newtheorem{stddef}{Definition}
+\definecolor{UzLcolor}{cmyk}{1,.0,.20,.78} % Universitätsfarbe in CMYK
+%	\definecolor{UzLcolor}{cmyk}{0,0,0,.9} % In Graustufen diese Alternative wählen
+%
+% (end)
+%
+%
+%
+% Seitenlayout (fold)
+%
+%
+% Seitenlayout setzen
+\pagestyle{scrheadings}
+\clearscrheadings
+%innen: Kapitel Section
+\rehead{\leftmark}\lohead{\rightmark}
+%außen Seitenzahlen
+\rofoot{\pagemark}\lefoot{\pagemark}
+%
+%
+% Schriftart für Überschriften auf serifen, nur bis subsubsection nummerieren
+\setkomafont{sectioning}{\rmfamily\color{UzLcolor}\bfseries}
+\setkomafont{title}{\color{UzLcolor}}
+\setcounter{secnumdepth}{1} % Part/Chapter/Section mit Nummern 
+%
+% Listen-Einstellungen
+\setlist{itemsep=.5\baselineskip,leftmargin=1.5em}
+\setlist[enumerate,1]{label=\alph*)}
+%
+%
+% Vermeidung von Hurenkindern und Schusterjungen
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+%
+% Eigene Theorema-Umgebungen
+\newtheoremstyle{normalstyle}% ⟨name⟩
+{\baselineskip}%	⟨Space above⟩
+{}%	⟨Space below⟩
+{\normalfont}%	⟨Body font⟩
+{}%	⟨Indent amount⟩
+{\normalfont\bfseries}% ⟨Theorem head font⟩
+{.\newline}%	⟨Punctuation after theorem head⟩
+{.5\baselineskip}%	⟨Space after theorem head⟩
+{}%	⟨Theorem head spec (can be left empty, meaning ‘normal’)⟩
+\theoremstyle{normalstyle}
+\newtheorem{thm}{Theorem}[chapter]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{kor}[thm]{Korollar}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{rem}[thm]{Bemerkung}
+\newtheorem{ex}[thm]{Beispiel}
+%
+% Abbildungsformatierung
+\DeclareCaptionLabelSeparator{periodspace}{.\ }
+\captionsetup{format=hang,labelsep=periodspace,indention=-2cm,labelfont=bf,width=.9\textwidth,skip=.5\baselineskip}
+\captionsetup[table]{position=above}
+\captionsetup[sub]{labelfont=bf,labelsep=period,labelformat=mysublabelfmt,subrefformat=simple}
+%
+% Optik der Quelltexte mit eigenem Stil
+\renewcommand{\lstlistlistingname}{Algorithmenverzeichnis}
+\renewcommand{\lstlistingname}{Algorithmus}
+\lstset{language=Mathematica}
+\lstset{basicstyle={\sffamily\footnotesize},numbers=left,numberstyle=\tiny\color{UzLcolor},numbersep=5pt,
+	breaklines=true,
+	captionpos={t},
+	frame={lines},rulecolor=\color{black},framerule=0.5pt,
+	mathescape, columns=flexible,
+	tabsize=2
+}
+\lstdefinestyle{mystyle}
+{
+	keywordstyle=\bfseries,
+	numbers=left,
+	numberstyle=\tiny\color{UzLcolor},
+	numbersep=5pt,
+	breaklines=true,
+	frame={lines},
+	rulecolor=\color{UzLcolor},
+	framerule=0.5pt,
+	backgroundcolor=\color{UzLcolor!5},
+	aboveskip=1em,
+	belowskip=1em,
+	showstringspaces=false,
+	tabsize=3,
+	framesep=0.75em
+}	
+%
+% Chapter Style
+\titleformat{\chapter}[display]%
+{\relax%
+	\raggedleft%
+	\huge\bfseries
+	\color{UzLcolor}%
+}%
+{\Huge\raggedleft
+	\raggedleft{\textcolor{UzLcolor!25}{\scalefont{8}\thechapter}}}%
+{-.5\baselineskip} %
+{}
+\titlespacing{\chapter}{0pt}{\baselineskip}{\baselineskip}
+%
+% Design of the table of contents
+\titlecontents{chapter}[.5em]{\vspace{1\baselineskip}}{\contentslabel{1em}\large}{\large%\hspace*{-3.2em}
+}{\titlerule*[0.5pc]{}{\large\contentspage}}[\vspace{.1\baselineskip}]
+\titlecontents{section}[2.5em]{}{\contentslabel{2em}}{%\hspace*{-3.2em}
+}{\titlerule*[0.5pc]{.}\contentspage}
+\titlecontents{subsection}[3.5em]{}{\contentslabel{1.5em}}{%\hspace*{-3.2em}
+}{\titlerule*[0.5pc]{.}\contentspage}
+%
+\makeatletter% --> Anpassung der Nummernbreite
+\renewcommand*{\@pnumwidth}{1.7em}
+\makeatother% --> \makeatletter
+% (end)
+%
+%
+%
+% PDF-Meta-Informationen (fold)
+\hypersetup{
+	pdftitle={\UzLTitel},
+	pdfsubject={Dissertation},
+	pdfproducer={pdfLaTeX},
+	pdfcreator={YourEditor},
+	unicode=true,
+	pdfencoding=auto,
+	breaklinks=true,
+	plainpages=false,
+	pdfstartview=FitH,
+	pdfview=FitH,
+	pdfpagemode=UseOutlines,
+	bookmarksnumbered=true,
+	bookmarksopen=true,
+	bookmarksopenlevel=1,
+	pdfdisplaydoctitle=true,
+	pdfduplex=true,
+	pdflang=de,
+	colorlinks=true,
+	linkcolor=UzLcolor,
+	citecolor=black,
+	urlcolor=black
+}
+% (end)

@@ -1,46 +1,73 @@
+%
+%	Studentisches Skript für Verteilte Systeme.
+
+%	Nutzt ein Design von Ronny Bermann https://github.com/kellertuer/UzL-Design/blob/master/Dissertation/dissertation.tex
+
 \documentclass[
-	ngerman,
-	11pt,
-	twoside,
-	a4paper,
-	BCOR8.25mm,
-	DIV10,
-	headsepline,
-	footsepline,
-	openany
-]{scrbook}
-\usepackage[utf8]{inputenc}
-\usepackage{ngerman}
-\usepackage{amsthm}
-\usepackage{multicol}
-\usepackage{hyperref}
-\usepackage{cleveref}
-\hypersetup{
-	colorlinks,
-	citecolor=black,
-	filecolor=black,
-	linkcolor=black,
-	urlcolor=black
-}
+cleardoublepage=empty,	% leere Seite beim Kapitel komplett leer
+fontsize=11pt,			% Schriftgröße: 11pt
+a4paper,				% Format: DIN A4
+toc=bibliography,		% Literatur ins Inhaltsverzeichnis
+listof=leveldown,		% Einbinden von List of Figures/List of Tables ins Inhaltsverzeichnis
+twoside,				% Zweiseitiges Layout
+BCOR=13mm,				% Bundstegkorrektur
+headinclude=true,		% Kopfzeile gehört zur Texthöhe
+footinclude=false,		% ...Fußzeile nicht
+parskip=half,			% zwischen zwei Absätzen eine halbe Zeilenhöhe Platz
+DIV=10					% Typearea: Seiten in 10x10 teilen, um den Satzspiegel zu bestimmen
+%,draft					% für schnellere Kompilierung das Kommentar entfernen, dann keine Grafiken 
+,openany
+]{scrbook}				% KOMA-Skript-Buchklasse
 
-\newtheorem{stddef}{Definition}
-
-\title{Verteilte Systeme}
-\subtitle{Ein studentisches Skript}
+%Ganz viel schön machen Einbauen.
+\include{setup}
 
 
+% Dokumentanfang 
 \begin{document}
-\selectlanguage{ngerman}
+	
+	
+	% Abschnitt vor dem eigentlichen Text
+	\frontmatter
+	
+	% Titelseite
+	\begin{titlepage}
+		\parskip=0pt
+		\parindent=0pt
+		% Notwendig: Eigenes Institutslogo
+	%	\includegraphics[width=91mm]{logos/institutslogo.eps}
+		\par
+		\vspace{6\baselineskip}
+		\par\vspace{\baselineskip}
+		{\UzLTitelFormatiert}
+		\par
+		\vspace{\baselineskip}
+		Studentische Mitschrift als Skript.
+		\par
+		
+	\end{titlepage}
 
-	\maketitle
+	% Inhaltsverzeichnis
 	\tableofcontents
 
-
+	% Hauptteil (fold)
+	\mainmatter
+	
+	% %Einzelne Kapitel hier einbinden.	
 	\include{1-einleitung}
-	\include{2-konzepte} 	
-	
-	
-	\bibliographystyle{IEEEtran}
-	\bibliography{bibliography}
+	\include{2-konzepte}
 
+	% Bibliothek
+	\bibliographystyle{abbrv}
+	\bibliography{bibliography}
+	
+	\begingroup
+	\let\chapter=\section
+	
+	\listoffigures %Abbildungsverzeichnis
+	\lstlistoflistings %Quelltextverzeichnis
+	\listoftables %Tabellenverzechnis
+	% Add further lists here
+	\endgroup
+	\appendix
 \end{document}
