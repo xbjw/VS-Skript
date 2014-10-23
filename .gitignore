@@ -15,4 +15,5 @@
 *.tdo
 *.loa
 *.exp
-*.algorithmic
+*.algorithmic*
+.gz
